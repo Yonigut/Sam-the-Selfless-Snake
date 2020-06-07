@@ -13,7 +13,7 @@
 		<style type="text/css">
 
 			body {
-				background:rgb(116, 114, 114);
+				background: rgb(116, 114, 114);
 				text-align:center;
 			}
 
@@ -23,19 +23,20 @@
 
 			p.detail { 
 				font-family: 'Arial', arial, serif; font-size:18px;
-				text-indent: 0px;margin-bottom:20;margin-top:30px}
+				text-indent: 0px;margin-bottom:5;margin-top:5px}
 			
 			span.name { 
 				color:rgb(252, 252, 252);
 				font-weight:bold;
 				font-family: 'Arial', arial, serif; font-size:24px;
-				text-indent: 0px;margin-bottom:20;margin-top:30px}
+				text-indent: 0px;margin-bottom:5;margin-top:5px}
 
 			h1 { font-family: 'Arial'; font-size:50px;
-				 text-indent: 0px;margin-bottom:20;margin-top:30px}
+				 text-indent: 0px;margin-bottom:0;margin-top:10px}
 
-			h2 { font-family: 'Arial', arial, serif; font-size:18px;
-				 text-indent: 0px;margin-bottom:20;margin-top:30px}
+			h2 { color:rgb(116, 114, 114);
+				font-family: 'Arial', arial, serif; font-size:18px;
+				text-indent: 0px;margin-bottom:5;margin-top:0px}
 
 
 		</style>
@@ -60,6 +61,7 @@
 				var Yhead = 5 + (Math.random() * (50 - 10))|0;
 
 				var tracker = document.getElementById('tracker');
+				var lostDisplay = document.getElementById('lost');
 				tracker.innerText = "0";
 
 				var i;
@@ -70,6 +72,8 @@
 				var canvas = document.createElement('canvas');
 				canvas.setAttribute('width', 65 * 10);
 				canvas.setAttribute('height', 50 * 10);
+				canvas.style.width=65 * 10;
+				canvas.style.height=50 * 10;
 				context = canvas.getContext('2d');
 				document.body.appendChild(canvas);
 
@@ -145,6 +149,10 @@
 							board[oldest[0]][oldest[1]] = 0;
 							context.clearRect(oldest[0] * 10, oldest[1] * 10, 10, 10);
 						}
+					//	context.font = "16px Arial";
+					//	context.fillStyle = "red";
+					//	context.textAlign = "center";
+					//	context.fillText("Game over. Thank you for feeding America. Press Space to Play again.", canvas.width/2, canvas.height/2);
 
 					} else {
 						// self-collision occurs:
@@ -159,11 +167,14 @@
 						}
 						score = snakelength*10;
 						board[Xhead][Yhead]=5;
-						context.font = "21px Times New Roman";
+						lostDisplay.style.color = "orange";
+						/* context.font = "16px Arial";
 						context.fillStyle = "red";
 						context.textAlign = "center";
 						context.fillText("Game over. Thank you for feeding America. Press Space to Play again.", canvas.width/2, canvas.height/2);
+						*/
 						if (newGame) {
+							lostDisplay.style.color = "rgb(116, 114, 114)";
 							context.fillStyle = "black";
 							newGame = false;
 							gameOver = false;
@@ -211,6 +222,6 @@
 	<body onload="init()">
 		<h1>Sam the Selfless Snake</h1>
 		<p class="detail">You have donated <span class="name" id="tracker">0</span> meals to American families so far.</p>
-
+		<h2 id="lost">Game over. Thank you for feeding America. Press Space to Play again.</h2>
 	</body>
 </html>
