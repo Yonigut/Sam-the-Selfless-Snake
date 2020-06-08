@@ -38,6 +38,10 @@
 				font-family: 'Arial', arial, serif; font-size:18px;
 				text-indent: 0px;margin-bottom:5;margin-top:0px}
 
+			h3 { color:rgb(0, 0, 0);
+				font-family: 'Arial'; font-size:12px;
+				text-indent: 0px;margin-bottom:0;margin-top:0px}
+
 
 		</style>
 
@@ -62,7 +66,9 @@
 
 				var tracker = document.getElementById('tracker');
 				var lostDisplay = document.getElementById('lost');
-				tracker.innerText = "0";
+
+				var newMeals = 0;
+				var totalMeals = 0;
 
 				var i;
 				for (i = 0; i < 65; i++) {
@@ -119,8 +125,13 @@
 							// TO DO: increement score later
 							randomFood();
 							snakelength++;
+							newMeals = (snakelength - 1) / 4;
 							//tracker.innerHTML = "<span style='color: red;'>**You have donated " + (snakelength * 10) + "</span>";
-							tracker.innerText = "" + (snakelength * 10) + "";
+							if (totalMeals + newMeals == 1) {
+								tracker.innerText = "" + (totalMeals + newMeals) + " meal";
+							} else {
+								tracker.innerText = "" + (totalMeals + newMeals) + " meals";
+							}
 						}
 						context.fillStyle = "black";
 						context.fillRect(Xhead * 10, Yhead * 10, 9, 9);
@@ -178,6 +189,7 @@
 							context.fillStyle = "black";
 							newGame = false;
 							gameOver = false;
+							totalMeals += newMeals;
 							//restart the game:
 							context.clearRect(0, 0, 65 * 10, 50 * 10);
 
@@ -221,7 +233,8 @@
 
 	<body onload="init()">
 		<h1>Sam the Selfless Snake</h1>
-		<p class="detail">You have donated <span class="name" id="tracker">0</span> meals to American families so far.</p>
+		<p class="detail">You have donated <span class="name" id="tracker">0 meals </span> to Americans so far.</p>
+		<h3>In the time that it takes for Sam to eat four snacks, we generate enough ad revenue to donate one meal through Feeding America.</h3>
 		<h2 id="lost">Game over. Thank you for feeding America. Press Space to Play again.</h2>
 	</body>
 </html>
