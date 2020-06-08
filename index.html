@@ -4,7 +4,12 @@
 
 	<head>
 
-		<script data-ad-client="ca-pub-8935105032744886" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<script type="text/javascript">
+			window._mNHandle = window._mNHandle || {};
+			window._mNHandle.queue = window._mNHandle.queue || [];
+			medianet_versionId = "3121199";
+		</script>
+		<script src="https://contextual.media.net/dmedianet.js?cid=8CU8R76P7" async="async"></script>
 
 		<meta charset="utf-8" />
 
@@ -14,12 +19,24 @@
 
 			body {
 				background: rgb(192, 191, 191);
-				text-align:center;
+				text-align:left;
 			}
 
 			canvas {
 				background:rgb(255, 255, 255);
 			}
+
+			.column {
+				float: left;
+				width: 50%;
+				}
+
+/* Clear floats after the columns */
+			.row:after {
+				content: "";
+				display: table;
+				clear: both
+				}
 
 			p.detail { 
 				color:rgb(0, 0, 0);
@@ -38,10 +55,10 @@
 
 			h2 { color:rgb(192, 191, 191);
 				font-family: 'Arial', arial, serif; font-size:18px;
-				text-indent: 0px;margin-bottom:5;margin-top:0px}
+				text-indent: 0px;margin-bottom:5;margin-top:10px}
 
 			h3 { color: rgb(0, 0, 0);
-				font-family: 'Arial'; font-size:12px;
+				font-family: 'Arial'; font-size:10px;
 				text-indent: 0px;margin-bottom:0;margin-top:0px}
 
 
@@ -63,7 +80,7 @@
 				var currentDirection = Math.random() * 4 | 0;
 
 				// not exactly sure of these calculations
-				var Xhead = 5 + (Math.random() * (65 - 10))|0;
+				var Xhead = 5 + (Math.random() * (60 - 10))|0;
 				var Yhead = 5 + (Math.random() * (50 - 10))|0;
 
 				var tracker = document.getElementById('tracker');
@@ -73,7 +90,7 @@
 				var totalMeals = 0;
 
 				var i;
-				for (i = 0; i < 65; i++) {
+				for (i = 0; i < 60; i++) {
 					board[i] = [];
 				}
 
@@ -84,7 +101,7 @@
 
 					// randomize and check that the random spot is empty
 					do {
-						xFood = Math.random() * 65|0;
+						xFood = Math.random() * 60|0;
 						yFood = Math.random() * 50|0;
 					} while (board[xFood][yFood]);
  
@@ -95,9 +112,9 @@
 				}
 
 				var canvas = document.createElement('canvas');
-				canvas.setAttribute('width', 65 * 10);
+				canvas.setAttribute('width', 60 * 10);
 				canvas.setAttribute('height', 50 * 10);
-				canvas.style.width=65 * 10;
+				canvas.style.width=60 * 10;
 				canvas.style.height=50 * 10;
 				context = canvas.getContext('2d');
 				document.body.appendChild(canvas);
@@ -110,7 +127,7 @@
 				function gameplay() {
 
 					// wrap-around feature
-					Xhead = (Xhead+65)%65;
+					Xhead = (Xhead+60)%60;
 					Yhead = (Yhead+50)%50;
 
 					// check if snake should turn
@@ -195,9 +212,9 @@
 							gameOver = false;
 							totalMeals += newMeals;
 							//restart the game:
-							Xhead = 5 + (Math.random() * (65 - 10))|0;
+							Xhead = 5 + (Math.random() * (60 - 10))|0;
 							Yhead = 5 + (Math.random() * (50 - 10))|0;
-							context.clearRect(0, 0, 65 * 10, 50 * 10);
+							context.clearRect(0, 0, 60 * 10, 50 * 10);
 							snakepath = [];
 							snakelength = 1;
 							board = [];
@@ -208,7 +225,7 @@
 							// score = 0;
 							// inc_score = 50;
 
-							for (i = 0; i < 65; i++) {
+							for (i = 0; i < 60; i++) {
 								board[i] = [];
 							}
 
@@ -235,9 +252,27 @@
 	</head>
 
 	<body onload="init()">
-		<h1>Sam the Selfless Snake</h1>
-		<p class="detail">You have donated <span class="name" id="tracker">0 meals </span> to Americans so far.</p>
-		<h3>In the time that it takes for Sam to eat four snacks, we generate enough ad revenue to donate one meal through Feeding America.</h3>
-		<h2 id="lost">Game over. Thank you for feeding America. Press Space to Play again.</h2>
+		<div class="row">
+			<div class="column">
+				<h1>Sam the Selfless Snake</h1>
+				<p class="detail">You have donated <span class="name" id="tracker">0 meals </span> to Americans so far.</p>
+				<h3>In the time that it takes for Sam to eat four snacks, we generate enough ad revenue to donate one meal through Feeding America.</h3>
+				<h2 id="lost">Game over. Thank you for feeding America. Press Space to Play again.</h2>
+			</div>
+			<div class="column">
+				<div id="627283657">
+					<script type="text/javascript">
+						try {
+							window._mNHandle.queue.push(function (){
+								window._mNDetails.loadTag("627283657", "300x600", "627283657");
+							});
+						}
+						catch (error) {}
+					</script>
+				</div>
+			</div>
+		  </div>
+
 	</body>
+	
 </html>
