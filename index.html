@@ -13,32 +13,34 @@
 		<style type="text/css">
 
 			body {
-				background: rgb(116, 114, 114);
+				background: rgb(192, 191, 191);
 				text-align:center;
 			}
 
 			canvas {
-				background:rgb(253, 253, 253);
+				background:rgb(255, 255, 255);
 			}
 
 			p.detail { 
+				color:rgb(0, 0, 0);
 				font-family: 'Arial', arial, serif; font-size:18px;
 				text-indent: 0px;margin-bottom:5;margin-top:5px}
 			
 			span.name { 
-				color:rgb(252, 252, 252);
+				color: rgb(255, 255, 255);
 				font-weight:bold;
 				font-family: 'Arial', arial, serif; font-size:24px;
 				text-indent: 0px;margin-bottom:5;margin-top:5px}
 
 			h1 { font-family: 'Arial'; font-size:50px;
+				color:rgb(0, 0, 0);
 				 text-indent: 0px;margin-bottom:0;margin-top:10px}
 
-			h2 { color:rgb(116, 114, 114);
+			h2 { color:rgb(192, 191, 191);
 				font-family: 'Arial', arial, serif; font-size:18px;
 				text-indent: 0px;margin-bottom:5;margin-top:0px}
 
-			h3 { color:rgb(0, 0, 0);
+			h3 { color: rgb(0, 0, 0);
 				font-family: 'Arial'; font-size:12px;
 				text-indent: 0px;margin-bottom:0;margin-top:0px}
 
@@ -180,14 +182,14 @@
 						}
 						score = snakelength*10;
 						board[Xhead][Yhead]=5;
-						lostDisplay.style.color = "orange";
+						lostDisplay.style.color = "rgb(248, 103, 19)";
 						/* context.font = "16px Arial";
 						context.fillStyle = "red";
 						context.textAlign = "center";
 						context.fillText("Game over. Thank you for feeding America. Press Space to Play again.", canvas.width/2, canvas.height/2);
 						*/
 						if (newGame) {
-							lostDisplay.style.color = "rgb(116, 114, 114)";
+							lostDisplay.style.color = "rgb(192, 191, 191)";
 							context.fillStyle = "black";
 							newGame = false;
 							gameOver = false;
