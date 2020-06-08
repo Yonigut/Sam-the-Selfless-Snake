@@ -8,8 +8,6 @@
 
 		<title>Sam the Selfless Snake</title>
 
-		<link href='http://fonts.googleapis.com/css?family=Cabin+Sketch:bold' rel='stylesheet' type='text/css'>
-
 		<style type="text/css">
 
 			body {
@@ -75,6 +73,23 @@
 					board[i] = [];
 				}
 
+								function randomFood() {
+
+					var xFood = -1;
+					var yFood = -1;
+
+					// randomize and check that the random spot is empty
+					do {
+						xFood = Math.random() * 65|0;
+						yFood = Math.random() * 50|0;
+					} while (board[xFood][yFood]);
+ 
+					board[xFood][yFood] = 1;
+					var item = colors[Math.floor(Math.random() * colors.length)];
+					context.fillStyle = item;
+					context.fillRect(xFood * 10 + 1, yFood * 10 + 1, 6, 6);
+				}
+
 				var canvas = document.createElement('canvas');
 				canvas.setAttribute('width', 65 * 10);
 				canvas.setAttribute('height', 50 * 10);
@@ -85,22 +100,7 @@
 
 				var colors = ["blue", "green", "red"];
 
-				function randomFood() {
 
-					var x;
-					var y;
-
-					// randomize and check that the random spot is empty
-					do {
-						x = Math.random() * 65|0;
-						y = Math.random() * 50|0;
-					} while (board[x][y]);
- 
-					board[x][y] = 1;
-					var item = colors[Math.floor(Math.random() * colors.length)];
-					context.fillStyle = item;
-					context.fillRect(x * 10 + 1, y * 10 + 1, 6, 6);
-				}
 				randomFood();
 
 				function gameplay() {
@@ -191,15 +191,13 @@
 							gameOver = false;
 							totalMeals += newMeals;
 							//restart the game:
+							Xhead = 5 + (Math.random() * (65 - 10))|0;
+							Yhead = 5 + (Math.random() * (50 - 10))|0;
 							context.clearRect(0, 0, 65 * 10, 50 * 10);
-
 							snakepath = [];
-
 							snakelength = 1;
 							board = [];
 
-							Xhead = 5 + (Math.random() * (65 - 10))|0;
-							Yhead = 5 + (Math.random() * (50 - 10))|0;
 
 							currentDirection = Math.random() * 4 | 0;
 
